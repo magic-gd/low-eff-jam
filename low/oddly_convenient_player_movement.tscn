@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://oddly_convenient_player_movement.gd" type="Script" id=1]
+
+[node name="oddly_convenient_player_movement" type="Node"]
+script = ExtResource( 1 )
