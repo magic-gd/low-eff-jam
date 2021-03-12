@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://jumpnrun_movement.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Elena_hexe_feuer/nHexe.png" type="Texture" id=2]
+[ext_resource path="res://objects/WaterSpewer.tscn" type="PackedScene" id=3]
+
+[sub_resource type="PhysicsMaterial" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 17.6348
@@ -14,7 +17,8 @@ radius = 47.1445
 "controllable",
 ]]
 mode = 2
-gravity_scale = 4.0
+physics_material_override = SubResource( 3 )
+gravity_scale = 6.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 2.1082, 0.373433 )
@@ -27,11 +31,17 @@ shape = SubResource( 1 )
 
 [node name="jumpnrun_movement" parent="." instance=ExtResource( 1 )]
 sprite_path = NodePath("../Sprite")
+speed = 600.0
+jump_height = 300.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2( 1.5, 1.5 )
 
 [node name="InteractionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2( -2.99663, 11.9865 )
 shape = SubResource( 2 )
+
+[node name="WaterSpewer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 28.8424, 7.11696 )
