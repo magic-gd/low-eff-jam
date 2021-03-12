@@ -8,7 +8,7 @@
 [ext_resource path="res://david/d_tilemap.tscn" type="PackedScene" id=6]
 [ext_resource path="res://marcel_treeant/treeant.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Elena_hexe_feuer/nHexeBody.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Elena_hexe_feuer/nfeuerbody.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Elena_hexe_feuer/feuer.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -48,7 +48,7 @@ position = Vector2( 755.146, 420.979 )
 position = Vector2( 556.812, 241.434 )
 
 [node name="nfeuerbody" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1525.39, 242.178 )
+position = Vector2( 1580.95, 445.365 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -88,7 +88,7 @@ modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 1579.13, 421.135 )
 
 [node name="Baum800" parent="Trees" instance=ExtResource( 5 )]
-position = Vector2( 267.103, 423.333 )
+position = Vector2( 2325.96, 416.983 )
 
 [node name="BaumBody" parent="Trees" instance=ExtResource( 4 )]
-position = Vector2( 385.065, 421.024 )
+position = Vector2( 386.652, 449.597 )

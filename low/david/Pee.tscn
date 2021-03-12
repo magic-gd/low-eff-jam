@@ -1,7 +1,16 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Pee" type="CPUParticles2D"]
+[sub_resource type="CircleShape2D" id=1]
+radius = 23.7677
+
+[node name="Pee" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="PeeParticles" type="CPUParticles2D" parent="."]
 amount = 32
+local_coords = false
 spread = 0.0
 initial_velocity = 100.0
 scale_amount = 5.0
