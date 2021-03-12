@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://jumpnrun_movement.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Elena_hexe_feuer/nHexe.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 17.6348
+height = 12.2286
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 47.1445
+
+[node name="Hexe" type="RigidBody2D" groups=[
+"controllable",
+]]
+mode = 2
+gravity_scale = 4.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2.1082, 0.373433 )
+scale = Vector2( 0.0999551, 0.106938 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.80454, 15.1772 )
+shape = SubResource( 1 )
+
+[node name="jumpnrun_movement" parent="." instance=ExtResource( 1 )]
+sprite_path = NodePath("../Sprite")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2( -2.99663, 11.9865 )
+shape = SubResource( 2 )

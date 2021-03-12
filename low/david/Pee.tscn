@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="Pee" type="CPUParticles2D"]
+amount = 32
+spread = 0.0
+initial_velocity = 100.0
+scale_amount = 5.0
+color = Color( 0.94902, 0.921569, 0.239216, 1 )
