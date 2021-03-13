@@ -1,8 +1,10 @@
 extends Node
 
-export (NodePath) var sprite_path
+export (Array, NodePath) var flip_on_turn = []
 
-export (float) var speed = 1000
+export (float) var acceleration = 1000
+export (float) var max_speed = 500
+export (float) var max_fall_speed = 2000
 export (float) var jump_height = 600
 
 onready var body: RigidBody2D = get_parent()
@@ -15,11 +17,11 @@ func _physics_process(delta):
 		return
 	
 	if Input.is_action_pressed("move_left"):
-		body.applied_force = Vector2(-speed, 0)
-		get_node(sprite_path).flip_h = true
+		body.applied_force = Vector2(-acceleration, 0)
+		set_look_dir(1)
 	elif Input.is_action_pressed("move_right"):
-		body.applied_force = Vector2(speed, 0)
-		get_node(sprite_path).flip_h = false
+		body.applied_force = Vector2(acceleration, 0)
+		set_look_dir(-1)
 	else:
 		body.applied_force = Vector2(0, 0)
 	
@@ -37,6 +39,14 @@ func jump():
 		body.apply_central_impulse(Vector2(0, -jump_height))
 	pass
 
+func set_look_dir(dir: int): # dir: -1 or 1
+	if flip_on_turn.empty():
+		return
+	
+	for node_path in flip_on_turn:
+		var node = get_node(node_path)
+		node.scale.x *= dir if node.scale.x < 0 else -dir
+
 func cap_speed():
-	if abs(body.linear_velocity.x) > speed:
-		body.applied_force = Vector2(0, 0)
+	body.linear_velocity.x = clamp(body.linear_velocity.x, -max_speed, max_speed)
+	body.linear_velocity.y = clamp(body.linear_velocity.y, -max_fall_speed, max_fall_speed)

@@ -1,7 +1,9 @@
 extends Position2D
 
+export (NodePath) onready var body = get_node(body)
+
 export (Resource) var water_particle = preload("res://objects/WaterParticle.tscn")
-export (Vector2) var spray_direction = Vector2(10, 0)
+export (float) var spray_speed = 20
 
 var spraying = false
 
@@ -9,7 +11,7 @@ func _ready():
 	$Timer.connect("timeout", self, "_on_Timer_timeout")
 
 func _input(event):
-	if not get_parent().is_in_group("player"):
+	if not body.is_in_group("player"):
 		spraying = false
 		return
 	
@@ -23,6 +25,7 @@ func _on_Timer_timeout():
 		return
 	
 	var particle = water_particle.instance()
-	particle.setup(spray_direction, 5.0)
+	var spray_direction: Vector2 = global_position.direction_to($Target.global_position)
+	particle.setup(Vector2(spray_direction * spray_speed), 5.0)
 	particle.global_position = global_position
-	get_parent().get_parent().add_child(particle)
+	body.get_parent().add_child(particle)
