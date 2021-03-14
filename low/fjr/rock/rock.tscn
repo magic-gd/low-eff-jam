@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fjr/tex/rock.png" type="Texture" id=1]
+[ext_resource path="res://fjr/rock/rock_controller.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 33.7953, 64.4029 )
+
+[node name="Rock" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="FuckThisShit" type="NinePatchRect" parent="."]
+margin_left = -34.0
+margin_top = -129.0
+margin_right = 34.0
+margin_bottom = -1.0
+texture = ExtResource( 1 )
+patch_margin_top = 64
+patch_margin_bottom = 64
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Collider" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2( 0, -64.7003 )
+shape = SubResource( 1 )
