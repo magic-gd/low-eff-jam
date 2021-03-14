@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sad_song.ogg-ee57999fc2704cf8964029a1cb21312a.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/sad_song.ogg"
+dest_files=[ "res://.import/sad_song.ogg-ee57999fc2704cf8964029a1cb21312a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

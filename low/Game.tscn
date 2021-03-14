@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PinkDude.tscn" type="PackedScene" id=2]
 [ext_resource path="res://david/Baum.tscn" type="PackedScene" id=3]
 [ext_resource path="res://david/BaumBody.tscn" type="PackedScene" id=4]
 [ext_resource path="res://david/Baum2.tscn" type="PackedScene" id=5]
@@ -9,6 +9,8 @@
 [ext_resource path="res://marcel_treeant/treeant.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Elena_hexe_feuer/nHexeBody.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Elena_hexe_feuer/feuer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/RefillArea.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Ghost.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -38,14 +40,20 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [node name="Game" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 634.049, 165.52 )
+[node name="Ghost" parent="." instance=ExtResource( 11 )]
+position = Vector2( 309.683, 237.601 )
 
-[node name="Treeant" parent="." instance=ExtResource( 7 )]
-position = Vector2( 755.146, 420.979 )
+[node name="PinkDude" parent="." instance=ExtResource( 2 )]
+position = Vector2( 638.053, 293.665 )
 
 [node name="Hexe" parent="." instance=ExtResource( 8 )]
-position = Vector2( 556.812, 241.434 )
+position = Vector2( 214.186, 400.452 )
+
+[node name="Treeant" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1054.52, 341.719 )
+
+[node name="Treeant2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2624.29, 416.47 )
 
 [node name="Feuer" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1580.95, 445.365 )
@@ -92,3 +100,12 @@ position = Vector2( 2325.96, 416.983 )
 
 [node name="BaumBody" parent="Trees" instance=ExtResource( 4 )]
 position = Vector2( 386.652, 449.597 )
+
+[node name="BaumBody2" parent="Trees" instance=ExtResource( 4 )]
+position = Vector2( 439.036, 449.597 )
+
+[node name="RefillAreas" type="Node2D" parent="."]
+
+[node name="RefillArea" parent="RefillAreas" instance=ExtResource( 10 )]
+position = Vector2( 3231.85, 476.462 )
+scale = Vector2( 1.58336, 0.785078 )

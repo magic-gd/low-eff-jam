@@ -8,7 +8,7 @@ const max_fall_speed = 200
 
 func _ready():
 	$DespawnTimer.connect("timeout", self, "queue_free")
-	connect("body_entered", self, "moisten_object")
+	connect("body_entered", self, "moisten_body")
 	linear_damp = 0.05
 
 func _physics_process(delta):
@@ -20,8 +20,8 @@ func setup(p_move_vector, p_fall_speed):
 	move_vector = p_move_vector
 	fall_speed = p_fall_speed
 
-func moisten_object(body: Node):
-	if body and body.get_node("waterable"):
+func moisten_body(body: Node):
+	if body and body.find_node("waterable"):
 		body.get_node("waterable").water()
 	despawn()
 
