@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/slurp_short.ogg-b755259c7c708759f952c9c819876de1.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/slurp_short.ogg"
+dest_files=[ "res://.import/slurp_short.ogg-b755259c7c708759f952c9c819876de1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -18,5 +18,8 @@ position = Vector2( -4.95094, -198.88 )
 shape = SubResource( 1 )
 
 [node name="waterable" parent="." instance=ExtResource( 2 )]
+body = NodePath("..")
+water = 99.0
+dry_speed = 0.1
 grow_ratio = -0.95
 destroy_when_done = true

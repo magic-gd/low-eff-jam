@@ -4,3 +4,7 @@
 
 [node name="kinematic_player_movement" type="Node"]
 script = ExtResource( 1 )
+
+[node name="TurnTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

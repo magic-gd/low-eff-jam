@@ -4,3 +4,7 @@
 
 [node name="waterable" type="Node"]
 script = ExtResource( 1 )
+
+[node name="DryTick" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
