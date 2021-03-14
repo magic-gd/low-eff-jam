@@ -26,5 +26,5 @@ func deactivate():
 
 
 func _on_Collider_body_entered(body):
-	if(body.name == "Player"):
+	if(body.is_in_group("player")):
 		activate()
