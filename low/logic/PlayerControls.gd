@@ -1,9 +1,12 @@
 extends Node
 
+signal player_change
+
 func _ready():
-	var player = get_tree().get_nodes_in_group("player")[0]
-	if player:
-		player.get_node("Camera2D").current = true
+	if get_tree().get_nodes_in_group("player"):
+		var player = get_tree().get_nodes_in_group("player")[0]
+		if player:
+			player.get_node("Camera2D").current = true
 
 func _input(event):
 	if event.is_action_pressed("interact"):
@@ -25,3 +28,4 @@ func swap_player(old_body, new_body):
 	new_body.add_to_group("player")
 	new_body.get_node("Camera2D").current = true
 	old_body.remove_from_group("player")
+	emit_signal("player_change")

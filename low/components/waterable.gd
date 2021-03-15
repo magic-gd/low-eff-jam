@@ -13,8 +13,10 @@ export (float) var grow_ratio = 1
 export (bool) var destroy_when_done = false
 export (bool) var disable_when_done = false
 
+var initial_scale
 
 func _ready():
+	initial_scale = body.scale
 #	self.connect("water_change", self, "grow")
 	$DryTick.connect("timeout", self, "dry")
 	if dry_speed == 0:
@@ -49,5 +51,6 @@ func dry():
 
 func grow():
 	var water_fill: float = float(water) / float(max_water)
-	var new_scale = 1 + (grow_ratio * water_fill)
-	body.scale = Vector2(new_scale, new_scale)
+	var new_scale_x = initial_scale.x * (1 + (grow_ratio * water_fill))
+	var new_scale_y = initial_scale.y * (1 + (grow_ratio * water_fill))
+	body.scale = Vector2(new_scale_x, new_scale_y)

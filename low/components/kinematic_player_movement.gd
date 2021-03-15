@@ -21,7 +21,8 @@ func _input(event):
 		return
 	
 	if event.is_action_pressed("jump"):
-		jump = true
+		if body.is_on_floor():
+			jump = true
 
 func _physics_process(delta):
 	var movement = Vector2(0, gravity)
@@ -35,7 +36,7 @@ func _physics_process(delta):
 		movement.y = -jump_height
 		jump = false
 	
-	last_movement = body.move_and_slide(movement, Vector2(0, -1), false, 4, 0.785398, false)
+	last_movement = body.move_and_slide_with_snap(movement, Vector2(0, 1), Vector2(0, -1), false, 4, 0.785398, false)
 
 func _process(delta):
 	# Stop animation when not moving
@@ -56,7 +57,8 @@ func _auto_move(delta) -> Vector2:
 		var collision = body.get_slide_collision(i)
 		if collision.collider.is_in_group("player"):
 			#Dont move if layer is touching
-			return Vector2(delta * look_dir, last_movement.y + gravity)
+#			return Vector2(delta * look_dir, last_movement.y + gravity)
+			pass
 	
 	if(body.is_on_wall() and $TurnTimer.is_stopped()):
 		$TurnTimer.start()

@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/objects/treeant_sprout.png" type="Texture" id=1]
+[ext_resource path="res://components/waterable.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/TreeantSprout.gd" type="Script" id=3]
+[ext_resource path="res://components/InteractionArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/ui/need_water_bubble.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.6987, 8.90998 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 36.7302
+
+[node name="TreeantSprout" type="StaticBody2D" groups=[
+"controllable",
+]]
+collision_layer = 8
+collision_mask = 2147483648
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.111038, -21.1165 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.289936, -9.93465 )
+shape = SubResource( 1 )
+
+[node name="waterable" parent="." instance=ExtResource( 2 )]
+max_water = 20.0
+dry_speed = 0.0
+grow_ratio = 0.25
+destroy_when_done = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2( 0.6, 0.6 )
+
+[node name="InteractionArea" parent="." instance=ExtResource( 4 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2( -0.253586, -28.8586 )
+shape = SubResource( 2 )
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="UILayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UILayer/UI"]
+anchor_left = 13.1616
+anchor_top = 3.95169
+anchor_right = 18.0366
+anchor_bottom = 6.50169
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
