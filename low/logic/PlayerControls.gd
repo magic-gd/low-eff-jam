@@ -2,15 +2,19 @@ extends Node
 
 signal player_change
 
+var player
+
 func _ready():
-	if get_tree().get_nodes_in_group("player"):
-		var player = get_tree().get_nodes_in_group("player")[0]
-		if player:
-			player.get_node("Camera2D").current = true
+	player = _get_player()
+	if player and player.get_node("Camera2D"):
+		player.get_node("Camera2D").current = true
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		var player = get_tree().get_nodes_in_group("player")[0]
+		player = _get_player()
+		if not player:
+			return
+		
 		var area: Area2D = player.find_node("InteractionArea")
 		var body_found = false
 		for nearby_body in area.get_overlapping_bodies():
@@ -29,3 +33,11 @@ func swap_player(old_body, new_body):
 	new_body.get_node("Camera2D").current = true
 	old_body.remove_from_group("player")
 	emit_signal("player_change")
+
+func _get_player() -> Node:
+	
+	var nodes = get_tree().get_nodes_in_group("player")
+	if nodes.empty():
+		return null
+	
+	return nodes[0]

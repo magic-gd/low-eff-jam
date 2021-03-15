@@ -18,3 +18,6 @@ func play(song, volume):
 		$AudioStreamPlayer.stream = song
 		$AudioStreamPlayer.volume_db = volume
 		$AudioStreamPlayer.play()
+
+func set_volume(volume):
+	$AudioStreamPlayer.volume_db = volume

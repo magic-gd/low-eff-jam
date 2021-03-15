@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://david/d_tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ghost.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ui/default_theme.tres" type="Theme" id=3]
 
 [node name="LevelTemplate" type="Node2D"]
 
@@ -14,3 +15,29 @@
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Decoration" type="Node2D" parent="."]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="UILayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.561218
+margin_top = 0.561234
+margin_right = 0.561279
+margin_bottom = 0.561218
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionLabel" type="Label" parent="UILayer/UI"]
+anchor_left = 0.389648
+anchor_top = 0.0333333
+anchor_right = 0.977539
+anchor_bottom = 0.0816667
+margin_top = -1.90735e-06
+theme = ExtResource( 3 )
+align = 2
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": true
+}

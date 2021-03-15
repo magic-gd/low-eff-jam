@@ -4,33 +4,16 @@
 [ext_resource path="res://Elena_hexe_feuer/nHexe.png" type="Texture" id=2]
 [ext_resource path="res://objects/WaterSprayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/InteractionArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/HoverAnimation.tscn" type="PackedScene" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 50.1907
+radius = 64.5752
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 17.6348
-height = 12.2286
-
-[sub_resource type="Animation" id=4]
-resource_name = "float"
-length = 3.0
-loop = true
-step = 0.25
-tracks/0/type = "value"
-tracks/0/path = NodePath("flip_on_turn/Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.75, 1.5, 2.25, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 2, 0 ), Vector2( 2, -2 ), Vector2( 2, 0 ), Vector2( 2, 2 ), Vector2( 2, 0 ) ]
-}
+radius = 22.5938
+height = 35.0261
 
 [node name="Hexe" type="RigidBody2D" groups=[
 "controllable",
@@ -45,12 +28,12 @@ gravity_scale = 6.0
 [node name="flip_on_turn" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="flip_on_turn"]
-position = Vector2( 2, -0.558863 )
-scale = Vector2( 0.0999551, 0.106938 )
+position = Vector2( 2, 0 )
+scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 2 )
 
 [node name="WaterSprayer" parent="flip_on_turn" instance=ExtResource( 3 )]
-position = Vector2( 28.8424, 7.11696 )
+position = Vector2( 41.0262, 8.17642 )
 body = NodePath("../..")
 
 [node name="InteractionArea" parent="flip_on_turn" instance=ExtResource( 4 )]
@@ -60,11 +43,11 @@ position = Vector2( -3.74576, 15.3576 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -3.80454, 15.1772 )
+position = Vector2( -8.27511, 29.2716 )
 shape = SubResource( 3 )
 
 [node name="jumpnrun_movement" parent="." instance=ExtResource( 1 )]
-position = Vector2( -1.79115, 34.0031 )
+position = Vector2( -6.82361, 67.3762 )
 flip_on_turn = [ NodePath("../CollisionShape2D"), NodePath("../flip_on_turn") ]
 jump_height = 300.0
 jumps = -1
@@ -72,6 +55,4 @@ jumps = -1
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2( 1.25, 1.25 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "float"
-anims/float = SubResource( 4 )
+[node name="HoverAnimation" parent="." instance=ExtResource( 5 )]

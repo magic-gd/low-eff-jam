@@ -4,7 +4,7 @@ export (Vector2) var move_vector
 export var fall_speed = 10.0
 export var fall_accel = 9.8
 
-const max_fall_speed = 200
+const max_fall_speed = 50
 
 func _ready():
 	$DespawnTimer.connect("timeout", self, "queue_free")

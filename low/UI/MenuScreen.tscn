@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/SoundButton.gd" type="Script" id=1]
+[ext_resource path="res://UI/MenuScreen.gd" type="Script" id=2]
+[ext_resource path="res://assets/ui/sound_on.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/sound_off.png" type="Texture" id=4]
+
+[node name="MenuScreen" type="CanvasLayer"]
+
+[node name="MenuScreen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="MenuScreen"]
+self_modulate = Color( 1, 1, 1, 0.784314 )
+anchor_left = 0.27832
+anchor_top = 0.121667
+anchor_right = 0.72168
+anchor_bottom = 0.878333
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SoundButton" type="TextureButton" parent="MenuScreen/Panel"]
+margin_left = 190.285
+margin_top = 209.014
+margin_right = 254.285
+margin_bottom = 273.014
+texture_normal = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+on_texture = ExtResource( 3 )
+off_texture = ExtResource( 4 )
