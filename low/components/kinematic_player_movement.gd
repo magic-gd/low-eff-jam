@@ -7,6 +7,8 @@ export (float) var speed = 150
 export (float) var gravity = 100
 export (float) var jump_height = 600
 
+export (bool) var play_sound = true
+
 onready var body: KinematicBody2D = get_parent()
 
 var look_dir = 1 setget set_look_dir
@@ -35,6 +37,9 @@ func _physics_process(delta):
 	if jump:
 		movement.y = -jump_height
 		jump = false
+		
+		if play_sound:
+			MusicController.play_effect("jump")
 	
 	last_movement = body.move_and_slide_with_snap(movement, Vector2(0, 1), Vector2(0, -1), false, 4, 0.785398, false)
 

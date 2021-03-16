@@ -37,6 +37,7 @@ shape = SubResource( 1 )
 flip_on_turn = [ NodePath("../flip_on_turn") ]
 jump_height = 400.0
 jumps = -1
+play_sound = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

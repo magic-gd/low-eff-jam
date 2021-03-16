@@ -10,6 +10,7 @@ height = 36.5303
 
 [node name="Feuer" type="StaticBody2D"]
 script = ExtResource( 3 )
+grow_ratio = -0.8
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 12.1911, -123.467 )

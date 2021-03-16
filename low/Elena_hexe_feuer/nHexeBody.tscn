@@ -49,8 +49,9 @@ shape = SubResource( 3 )
 [node name="jumpnrun_movement" parent="." instance=ExtResource( 1 )]
 position = Vector2( -6.82361, 67.3762 )
 flip_on_turn = [ NodePath("../CollisionShape2D"), NodePath("../flip_on_turn") ]
-jump_height = 300.0
+jump_height = 450.0
 jumps = -1
+play_sound = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2( 1.25, 1.25 )

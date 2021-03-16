@@ -11,6 +11,8 @@ export (int) var jumps = 2 # -1 == infinite
 export (bool) var automove = false
 export (float) var automove_speed = 500
 
+export (bool) var play_sound = true
+
 onready var body: RigidBody2D = get_parent()
 onready var remaining_jumps = jumps
 onready var feet: Array = $Feet.get_children()
@@ -51,6 +53,7 @@ func _player_move(delta):
 
 func _auto_move(delta):
 	if not automove:
+		body.applied_force = Vector2(0, 0)
 		return
 	
 	if body.linear_velocity.length() < 0.1 and $TurnTimer.is_stopped():
@@ -77,6 +80,9 @@ func jump():
 	
 	if body.linear_velocity.y > -jump_height:
 		body.linear_velocity.y = -jump_height
+	
+	if play_sound:
+		MusicController.play_effect("jump")
 
 func set_look_dir(look_dir: int): # dir: -1 or 1
 	if flip_on_turn.empty():

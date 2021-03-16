@@ -52,8 +52,11 @@ func _on_Timer_timeout():
 	
 	var particle = water_particle.instance()
 	var spray_direction: Vector2 = global_position.direction_to($Target.global_position)
-	particle.setup(Vector2(spray_direction * spray_speed), 5.0)
+	particle.setup(Vector2(spray_direction * _randomize_speed(spray_speed, 0.1)), 5.0)
 	particle.global_position = global_position
 	body.get_parent().add_child(particle)
 	
 	set_water(max(0, water - 1))
+
+func _randomize_speed(speed, percent_amount):
+	return speed * rand_range(1-percent_amount, 1+percent_amount)
