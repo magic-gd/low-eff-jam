@@ -1,0 +1,145 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://UI/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/ui/Roboto-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://background/marcel/background02.png" type="Texture" id=3]
+[ext_resource path="res://background/marcel/background01.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.317647, 0.337255, 0.572549, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 42
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.113725, 0.121569, 0.219608, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "scroll_background"
+length = 20.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10, 11, 19 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 775, 500 ), Vector2( 1520, 500 ), Vector2( 1520, 500 ), Vector2( 775, 500 ) ]
+}
+
+[node name="UILayer" type="CanvasLayer"]
+
+[node name="MainMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainMenu"]
+anchor_top = 0.126667
+anchor_right = 1.0
+anchor_bottom = 0.253333
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.184314, 0.407843, 0.184314, 1 )
+text = "Spirit of the Forest"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel" type="Panel" parent="MainMenu"]
+anchor_left = 0.408908
+anchor_top = 0.47945
+anchor_right = 0.570041
+anchor_bottom = 0.626116
+margin_top = -1.52588e-05
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="PlayButton" type="Button" parent="MainMenu/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
+text = "Play"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="MainMenu"]
+anchor_left = 0.40918
+anchor_top = 0.886667
+anchor_right = 0.570313
+anchor_bottom = 0.968333
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="CreditsButton" type="Button" parent="MainMenu/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 5 )
+text = "Credits"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="BackgroundLayer"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundLayer/Node2D"]
+autoplay = "scroll_background"
+anims/scroll_background = SubResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="BackgroundLayer/Node2D"]
+position = Vector2( 1010.57, 500 )
+current = true
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="BackgroundLayer/Node2D"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BackgroundLayer/Node2D/ParallaxBackground"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+position = Vector2( 341.977, 423.854 )
+
+[node name="background02" type="Sprite" parent="BackgroundLayer/Node2D/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 228, 55 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background01" type="Sprite" parent="BackgroundLayer/Node2D/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1380, 55 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}

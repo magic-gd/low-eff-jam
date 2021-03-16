@@ -1,0 +1,892 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://dvd/d_tilemap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/Ending_Cutscene.gd" type="Script" id=2]
+[ext_resource path="res://objects/Flower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/TreeantSprout.tscn" type="PackedScene" id=4]
+[ext_resource path="res://dvd/BaumBody.tscn" type="PackedScene" id=5]
+[ext_resource path="res://PinkDude.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Elena_hexe_feuer/nHexeBody.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/ui/Roboto-Black.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/ui/default_theme.tres" type="Theme" id=9]
+[ext_resource path="res://background/marcel/ParallaxBackground.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "end_cutscene"
+length = 16.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 8.25, 15.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1125, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/UI:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 15.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 34
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.270588, 0.317647, 0.270588, 1 )
+
+[node name="Ending_Cutscene" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="d_tilemap" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 65538, 0, 1, 65539, 0, 1, 65557, 0, 1, 65558, 0, 1, 65559, 0, 1, 196606, 0, 1, 196607, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 0, 131075, 0, 0, 131076, 0, 1, 131077, 0, 1, 131078, 0, 1, 131079, 0, 1, 131080, 0, 1, 131081, 0, 1, 131082, 0, 1, 131083, 0, 1, 131084, 0, 1, 131085, 0, 1, 131086, 0, 1, 131087, 0, 3, 131088, 0, 3, 131089, 0, 3, 131090, 0, 1, 131091, 0, 1, 131092, 0, 1, 131093, 0, 0, 131094, 0, 0, 131095, 0, 0, 262137, 0, 1, 262138, 0, 1, 262139, 0, 1, 262140, 0, 1, 262141, 0, 1, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 2, 196624, 0, 2, 196625, 0, 2, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0 )
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="PinkDude" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 827.254, 103.344 )
+
+[node name="Hexe" parent="Objects" instance=ExtResource( 7 )]
+position = Vector2( 1446.48, -19.4692 )
+
+[node name="Sprite" parent="Objects/Hexe/flip_on_turn" index="0"]
+flip_h = true
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="Flowers" type="Node2D" parent="Decoration"]
+
+[node name="Flower" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( -72.1197, 128.573 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower16" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( -46.7578, 127.238 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower16" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower16" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower17" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 36.0023, 126.571 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower17" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower17" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower18" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 268.264, 127.906 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower18" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower18" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower19" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( -297.708, 193.313 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower19" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower19" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower20" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( -407.164, 192.646 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower20" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower20" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower21" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 383.479, 127.629 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower21" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower21" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower33" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 593.963, 127.629 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower33" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower33" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower35" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 676.602, 126.57 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower35" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower35" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower36" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 848.234, 128.689 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower36" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower36" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower37" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 1388.56, 67.24 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower37" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower37" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower38" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 1231.76, 128.689 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower38" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower38" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower34" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 483.53, 126.686 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower34" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower34" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower22" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 192.846, 63.8336 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower22" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower22" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower23" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 173.491, 63.1661 )
+scale = Vector2( 3, 3 )
+color = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower23" index="1"]
+modulate = Color( 0.760784, 0.807843, 0.215686, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower23" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.4
+
+[node name="Flower10" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( -94.812, 127.238 )
+scale = Vector2( 3, 3 )
+color = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower10" index="1"]
+modulate = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower10" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="Flower11" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( -212.945, 192.646 )
+scale = Vector2( 3, 3 )
+color = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower11" index="1"]
+modulate = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower11" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="Flower12" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 142.789, 63.1661 )
+scale = Vector2( 3, 3 )
+color = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower12" index="1"]
+modulate = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower12" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="Flower13" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 286.952, 127.906 )
+scale = Vector2( 3, 3 )
+color = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower13" index="1"]
+modulate = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower13" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="Flower14" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 318.988, 129.241 )
+scale = Vector2( 3, 3 )
+color = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower14" index="1"]
+modulate = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower14" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="Flower39" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 626.762, 129.241 )
+scale = Vector2( 3, 3 )
+color = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower39" index="1"]
+modulate = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower39" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="Flower40" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 653.249, 128.711 )
+scale = Vector2( 3, 3 )
+color = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower40" index="1"]
+modulate = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower40" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="Flower41" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 803.163, 128.711 )
+scale = Vector2( 3, 3 )
+color = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower41" index="1"]
+modulate = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower41" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="Flower42" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 1317.44, 129.43 )
+scale = Vector2( 3, 3 )
+color = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower42" index="1"]
+modulate = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower42" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="Flower43" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 1360.57, 65.7904 )
+scale = Vector2( 3, 3 )
+color = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower43" index="1"]
+modulate = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower43" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="Flower15" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( -335.75, 193.313 )
+scale = Vector2( 3, 3 )
+color = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower15" index="1"]
+modulate = Color( 0.768627, 0.176471, 0.176471, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower15" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="Flower2" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( -14.7216, 127.906 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower2" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower2" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower3" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 349.022, 129.241 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower3" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower3" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower24" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 433.971, 129.241 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower24" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower24" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower25" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 542.516, 128.297 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower25" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower25" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower26" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 711.47, 128.297 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower26" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower26" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower27" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 762.439, 127.353 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower27" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower27" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower28" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 891.75, 127.353 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower28" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower28" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower29" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 1185.29, 132.072 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower29" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower29" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower30" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 1423.15, 64.1134 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower30" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower30" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower31" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 1486.39, 65.0572 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower31" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower31" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower32" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 1508.1, 64.1134 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower32" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower32" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower4" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 227.552, 65.1684 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower4" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower4" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower5" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( -174.235, 191.311 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower5" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower5" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower6" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( -356.44, 192.646 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower6" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower6" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower7" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( -256.327, 193.313 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower7" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower7" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower8" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 92.0656, 128.573 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower8" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower8" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Flower9" parent="Decoration/Flowers" instance=ExtResource( 3 )]
+position = Vector2( 71.3756, 127.906 )
+scale = Vector2( 3, 3 )
+color = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="Flower" parent="Decoration/Flowers/Flower9" index="1"]
+modulate = Color( 0.231373, 0.25098, 0.745098, 1 )
+
+[node name="waterable" parent="Decoration/Flowers/Flower9" index="3"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.0
+grow_ratio = -0.6
+
+[node name="Trees" type="Node2D" parent="Decoration"]
+
+[node name="BaumBody" parent="Decoration/Trees" instance=ExtResource( 5 )]
+position = Vector2( 14.5092, 132.875 )
+scale = Vector2( 4, 4 )
+
+[node name="waterable" parent="Decoration/Trees/BaumBody" index="3"]
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.8
+
+[node name="BaumBody3" parent="Decoration/Trees" instance=ExtResource( 5 )]
+position = Vector2( 1279.59, 136.439 )
+scale = Vector2( 4, 4 )
+
+[node name="waterable" parent="Decoration/Trees/BaumBody3" index="3"]
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.8
+
+[node name="BaumBody2" parent="Decoration/Trees" instance=ExtResource( 5 )]
+position = Vector2( -374.826, 200.988 )
+scale = Vector2( 4, 4 )
+
+[node name="waterable" parent="Decoration/Trees/BaumBody2" index="3"]
+water = 99.0
+dry_speed = 0.8
+grow_ratio = -0.8
+
+[node name="TreeantSprout" parent="Decoration/Trees" instance=ExtResource( 4 )]
+position = Vector2( 218.633, 68.9535 )
+scale = Vector2( 6, 6 )
+
+[node name="waterable" parent="Decoration/Trees/TreeantSprout" index="2"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="TreeantSprout2" parent="Decoration/Trees" instance=ExtResource( 4 )]
+position = Vector2( 924.225, 134.88 )
+scale = Vector2( 6, 6 )
+
+[node name="waterable" parent="Decoration/Trees/TreeantSprout2" index="2"]
+max_water = 100.0
+water = 99.0
+dry_speed = 1.2
+grow_ratio = -0.7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "end_cutscene"
+anims/end_cutscene = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.8, 0.8 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/UI"]
+modulate = Color( 0.447059, 0.552941, 0.878431, 1 )
+anchor_left = 0.000525951
+anchor_top = 0.00944096
+anchor_right = 0.690956
+anchor_bottom = 0.346108
+theme = SubResource( 3 )
+text = "You saved the forest!
+
+Thanks for playing."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel" type="Panel" parent="CanvasLayer/UI"]
+margin_left = 809.0
+margin_top = 464.0
+margin_right = 953.0
+margin_bottom = 526.0
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/UI/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 9 )
+text = "Main Menu"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 10 )]
+
+[editable path="Objects/Hexe"]
+
+[editable path="Decoration/Flowers/Flower"]
+
+[editable path="Decoration/Flowers/Flower16"]
+
+[editable path="Decoration/Flowers/Flower17"]
+
+[editable path="Decoration/Flowers/Flower18"]
+
+[editable path="Decoration/Flowers/Flower19"]
+
+[editable path="Decoration/Flowers/Flower20"]
+
+[editable path="Decoration/Flowers/Flower21"]
+
+[editable path="Decoration/Flowers/Flower33"]
+
+[editable path="Decoration/Flowers/Flower35"]
+
+[editable path="Decoration/Flowers/Flower36"]
+
+[editable path="Decoration/Flowers/Flower37"]
+
+[editable path="Decoration/Flowers/Flower38"]
+
+[editable path="Decoration/Flowers/Flower34"]
+
+[editable path="Decoration/Flowers/Flower22"]
+
+[editable path="Decoration/Flowers/Flower23"]
+
+[editable path="Decoration/Flowers/Flower10"]
+
+[editable path="Decoration/Flowers/Flower11"]
+
+[editable path="Decoration/Flowers/Flower12"]
+
+[editable path="Decoration/Flowers/Flower13"]
+
+[editable path="Decoration/Flowers/Flower14"]
+
+[editable path="Decoration/Flowers/Flower39"]
+
+[editable path="Decoration/Flowers/Flower40"]
+
+[editable path="Decoration/Flowers/Flower41"]
+
+[editable path="Decoration/Flowers/Flower42"]
+
+[editable path="Decoration/Flowers/Flower43"]
+
+[editable path="Decoration/Flowers/Flower15"]
+
+[editable path="Decoration/Flowers/Flower2"]
+
+[editable path="Decoration/Flowers/Flower3"]
+
+[editable path="Decoration/Flowers/Flower24"]
+
+[editable path="Decoration/Flowers/Flower25"]
+
+[editable path="Decoration/Flowers/Flower26"]
+
+[editable path="Decoration/Flowers/Flower27"]
+
+[editable path="Decoration/Flowers/Flower28"]
+
+[editable path="Decoration/Flowers/Flower29"]
+
+[editable path="Decoration/Flowers/Flower30"]
+
+[editable path="Decoration/Flowers/Flower31"]
+
+[editable path="Decoration/Flowers/Flower32"]
+
+[editable path="Decoration/Flowers/Flower4"]
+
+[editable path="Decoration/Flowers/Flower5"]
+
+[editable path="Decoration/Flowers/Flower6"]
+
+[editable path="Decoration/Flowers/Flower7"]
+
+[editable path="Decoration/Flowers/Flower8"]
+
+[editable path="Decoration/Flowers/Flower9"]
+
+[editable path="Decoration/Trees/BaumBody"]
+
+[editable path="Decoration/Trees/BaumBody3"]
+
+[editable path="Decoration/Trees/BaumBody2"]
+
+[editable path="Decoration/Trees/TreeantSprout"]
+
+[editable path="Decoration/Trees/TreeantSprout2"]

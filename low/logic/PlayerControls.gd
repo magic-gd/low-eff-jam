@@ -27,6 +27,9 @@ func _input(event):
 			ghost.global_position = player.global_position
 			player.get_parent().add_child(ghost)
 			swap_player(player, ghost)
+	
+	if event.is_action_pressed("restart"):
+		get_tree().change_scene(GameState.current_level.filename)
 
 func swap_player(old_body, new_body):
 	new_body.add_to_group("player")

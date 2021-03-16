@@ -11,5 +11,5 @@ dest_files=[ "res://.import/happy_song.ogg-8ffb70354eba2017d43bf9e8bb6de742.oggs
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
